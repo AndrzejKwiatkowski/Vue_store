@@ -38,10 +38,10 @@ export default {
                 localStorage.setItem('token', response.data.token)
 
                if(localStorage.token) {
-                 router.push({path: '/home'})
+                 router.push({path: '/articeles'})
                }
                else{
-                 router.push({path: '/login'})
+                 router.push({path: '/home'})
                }
                               
                
