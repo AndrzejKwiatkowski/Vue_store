@@ -1,14 +1,14 @@
 export const basket = {
     state: {
-        basket: [],
+        data: [],
     
       },
       mutations: {
         addProduct: (state, datas) => {
-          state.basket.push(datas);
+          state.data.push(datas);
         },
         delProduct: (state, del) => {
-          state.basket.splice(del, 1);
+          state.data.splice(del, 1);
         }
       },
       actions: {
