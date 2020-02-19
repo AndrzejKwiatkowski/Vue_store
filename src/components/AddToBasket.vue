@@ -13,7 +13,7 @@
         <span class="badge badge-light">{{basket.length}}</span>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <table class="">
+        <table class>
           <tbody class="dropdown-item">
             <tr v-for="(poz, index) in basket" :key="index">
               <td>{{poz.id}}</td>
@@ -27,15 +27,10 @@
             </tr>
             <tr>
               <td colspan="5">
-        <button class="btn btn-primary" @click="createOrder">Submit Your Order</button>
-
-
+                <button class="btn btn-primary" @click="createOrder">Submit Your Order</button>
               </td>
-
             </tr>
-            
           </tbody>
-          
         </table>
       </div>
     </div>
@@ -43,53 +38,39 @@
 </template>
 
 <script>
-
 export default {
-  name: 'AddToBasket',
+  name: "AddToBasket",
   data: function() {
-    return {
-   
-
-     }
-      
-    },
-  
- 
+    return {};
+  },
 
   methods: {
-      deleteItem(ind) {
-          
-          console.log(ind)
-          this.$store.dispatch('delFromBasket', ind)
-      },
-        createOrder() {
-          
-        
-         console.log(JSON.stringify(this.$store.state.basket.data))
-      
+    deleteItem(ind) {
+      console.log(ind);
+      this.$store.dispatch("delFromBasket", ind);
+    },
+    createOrder() {
+      console.log(JSON.stringify(this.$store.state.basket.data));
 
-           this.axios.post('http://localhost:8000/api/parcel', JSON.stringify(this.$store.state.basket.data)).
-           then((Response)=> console.log(Response))
-      
-
-  
-        }
+      this.axios.post( "http://localhost:8000/api/parcel",
+          JSON.stringify(this.$store.state.basket.data)
+        )
+        .then((this.$store.dispatch("resetBasket")));
+        //.then(Response => console.log(Response));
+    }
   },
-            
-  
+
   computed: {
     basket: function() {
       return this.$store.state.basket.data;
     }
   }
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
 td {
   padding: 0.5rem;
 }
-
 </style>>
 

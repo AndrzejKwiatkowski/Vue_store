@@ -26,7 +26,7 @@
           </p>
 
           <QuantityButtons @clicked="show"></QuantityButtons>
-        
+
           <a href="#" @click="addtobasket(articele.id)" class="btn btn-primary">Add to basket</a>
         </div>
       </div>
@@ -44,11 +44,11 @@ export default {
     Navbar,
     QuantityButtons
   },
- 
+
   data() {
     return {
       articeles: "",
-      quantity: '',
+      quantity: ""
     };
   },
 
@@ -60,24 +60,23 @@ export default {
   },
   methods: {
     addtobasket(id) {
+      
       //const loadfile = id;
       this.axios
         .get("http://localhost:8000/api/articele/" + `${id}`)
         .then(response => {
-     response.data.quantity = this.quantity;
+          response.data.quantity = this.quantity;
           console.log(response.data);
           this.$store.dispatch("dodaj", response.data);
         });
     },
-  
 
- show(val) {
-        this.quantity = val;
+    show(val) {
+      this.quantity = val;
     }
-}
-   
-  }
+  },
 
+};
 </script>
 
 
