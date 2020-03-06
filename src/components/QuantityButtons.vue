@@ -2,7 +2,7 @@
   <div class="input-group">
     <input
       type="button"
-      :disabled="this.counter <= 1 ? true : false"
+      :disabled="this.counter <= 0 ? true : false"
       @click="quantityMinus()"
       value="-"
       class="btn btn-success"
@@ -25,7 +25,7 @@ export default {
 
   data() {
     return {
-      counter: 1
+      counter: 0
     };
   },
 

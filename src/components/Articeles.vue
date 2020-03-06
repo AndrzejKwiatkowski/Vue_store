@@ -53,7 +53,7 @@ export default {
   },
 
   created() {
-    this.axios.get("http://localhost:8000/api/articeles").then(response => {
+    this.$http.get("http://localhost:8000/api/articeles").then(response => {
       this.articeles = response.data;
       //console.log(this.val);
     });
@@ -62,8 +62,7 @@ export default {
     addtobasket(id) {
       
       //const loadfile = id;
-      this.axios
-        .get("http://localhost:8000/api/articele/" + `${id}`)
+      this.$http.get("http://localhost:8000/api/articele/" + `${id}`)
         .then(response => {
           response.data.quantity = this.quantity;
           console.log(response.data);

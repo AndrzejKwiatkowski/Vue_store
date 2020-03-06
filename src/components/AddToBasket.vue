@@ -52,11 +52,12 @@ export default {
     createOrder() {
       console.log(JSON.stringify(this.$store.state.basket.data));
 
-      this.axios.post( "http://localhost:8000/api/parcel",
+      this.$http.post( "http://localhost:8000/api/parcel",
           JSON.stringify(this.$store.state.basket.data)
         )
-        .then((this.$store.dispatch("resetBasket")));
-        //.then(Response => console.log(Response));
+        
+       .then(Response => console.log(Response))
+        .then((this.$store.dispatch("resetBasket")))
     }
   },
 

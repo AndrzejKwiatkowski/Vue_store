@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input
-        v-model="email"
+        v-model="credential.email"
         type="email"
         class="form-control"
         id="exampleInputEmail1"
@@ -18,7 +18,7 @@
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
       <input
-        v-model="password"
+        v-model="credential.password"
         type="password"
         class="form-control"
         id="exampleInputPassword1"
@@ -36,32 +36,22 @@ import router from "../router/index";
 export default {
   name: "Login",
 
-  data() {
-    return {
-      email: "",
-      password: ""
-    };
-  },
-
-  methods: {
-    login() {
-      axios
-        .post("http://localhost:8000/api/login", {
-          email: this.email,
-          password: this.password
-        })
-        .then(response => {
-          localStorage.setItem("token", response.data.token);
-
-          if (localStorage.token) {
-            router.push({ path: "/articeles" });
-          } else {
-            router.push({ path: "/home" });
-          }
-        });
-    }
-  }
-};
+   data() {
+            return {
+                credential: {
+                    email:'',
+                    password:''
+                }
+            }
+        },
+        methods: {
+            login() {
+                this.$store.dispatch('login', this.credential);
+            }
+        },
+        created: function () {
+        }
+  };
 </script>
 
 <style scoped lang="scss">

@@ -23,6 +23,10 @@
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
         </li>
+        <li class="nav-item">
+              <button type="submit" @click.prevent="logout" class="btn btn-primary">Logout</button>
+
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -41,7 +45,14 @@ export default {
   name: "Navbar",
   components: {
     AddToBasket
-  }
+  },
+  
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+    }
+  },
+  
 };
 </script>
 

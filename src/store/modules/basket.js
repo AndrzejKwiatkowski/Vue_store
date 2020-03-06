@@ -12,12 +12,10 @@ export const basket = {
       state.data.splice(del, 1);
     },
     defBasket: (state) => {
-      function empty() {
-        //empty your array
-        sdata = [];
-    }
+    const empty = [];
+      state.data = empty;
     
-    }
+    },
   },
   actions: {
     dodaj: ({ commit }, datas) =>
